@@ -1,0 +1,90 @@
+@import url('styles.css');
+
+/* Custom Cursor Tracker - Modern Blend Mode Design */
+body, a, button, .icon-link, .btn, .skill-tag {
+    cursor: none !important;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    mix-blend-mode: difference;
+    position: fixed;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.15s ease-out;
+}
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    mix-blend-mode: difference;
+    position: fixed;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9998;
+    pointer-events: none;
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                background-color 0.3s, border 0.3s;
+}
+
+.cursor-hover {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-color: white;
+    mix-blend-mode: difference;
+}
+
+/* Cinematic Reveals */
+.reveal {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Left to right slide & rotate */
+.reveal-left { transform: translateX(-150px) rotate(-5deg); }
+.reveal-left.active { transform: translateX(0) rotate(0); }
+
+/* Right to left slide & rotate */
+.reveal-right { transform: translateX(150px) rotate(5deg); }
+.reveal-right.active { transform: translateX(0) rotate(0); }
+
+/* Bottom up stretch */
+.reveal-up { transform: translateY(100px) scaleY(1.2); }
+.reveal-up.active { transform: translateY(0) scaleY(1); }
+
+/* 3D Rotate in */
+.reveal-3d { 
+    transform: rotateY(90deg) scale(0.8); 
+    transform-origin: center; 
+    perspective: 1000px; 
+}
+.reveal-3d.active { transform: rotateY(0) scale(1); }
+
+/* 3D Hover Animations for Cards */
+.project-card, .edu-card, .timeline-content, .skill-category {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.project-card:hover, .edu-card:hover, .timeline-content:hover, .skill-category:hover {
+    transform: translateY(-15px) rotateX(4deg) rotateY(-4deg) scale(1.03);
+    box-shadow: -15px 25px 45px rgba(0, 240, 255, 0.15), 15px 25px 45px rgba(138, 43, 226, 0.15);
+    border-color: var(--accent-neon);
+    z-index: 10;
+}
